@@ -67,7 +67,7 @@ if which rbenv &>/dev/null ; then
 fi
 
 # load thoughtbot/dotfiles scripts
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:/usr/local/bin:$PATH"
 
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
