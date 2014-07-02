@@ -61,16 +61,16 @@ bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 export VISUAL=vim
 export EDITOR=$VISUAL
 
-# load rbenv if available
-if which rbenv &>/dev/null ; then
-  eval "$(rbenv init - --no-rehash)"
-fi
-
 # load thoughtbot/dotfiles scripts
 export PATH="$HOME/.bin:/usr/local/bin:$PATH"
 
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
+
+# load rbenv if available
+if which rbenv &>/dev/null ; then
+  eval "$(rbenv init - --no-rehash)"
+fi
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
