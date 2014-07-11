@@ -1,6 +1,12 @@
-#!/bin/sh
+#!/usr/bin/ruby
 #
 # Attach or create tmux session named the same as current directory.
 #
 
-tmux new-session -As `basename $PWD`
+session_name = File.basename(Dir.pwd)
+
+# tmux doesn't like session names with periods
+# See http://sourceforge.net/p/tmux/tickets/109/
+session_name.gsub!('.', '-')
+
+`tmux new-session -As #{session_name}`
