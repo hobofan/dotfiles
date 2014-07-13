@@ -1,4 +1,4 @@
-thoughtbot dotfiles
+Storeness dotfiles (forked from thoughtbot)
 ===================
 
 Requirements
@@ -19,14 +19,12 @@ Clone onto your laptop:
 
     git clone git://github.com/thoughtbot/dotfiles.git
 
-(Or, [fork and keep your fork
-updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
-
 Install [rcm](https://github.com/thoughtbot/rcm):
 
-    brew bundle dotfiles/Brewfile
+    wget https://thoughtbot.github.io/rcm/debs/rcm_1.2.3-1_all.deb
+    sudo dpkg -i rcm_1.2.3-1_all.deb
 
-Install:
+Install symlinks:
 
     rcup -d dotfiles -x README.md -x LICENSE -x Brewfile
 
