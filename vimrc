@@ -2,6 +2,7 @@
 " possible, as it has side effects.
 set nocompatible
 
+
 " Leader
 let mapleader = " "
 
@@ -26,7 +27,12 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-filetype plugin indent on
+filetype plugin indent on 
+
+syntax on
+set background=dark
+set t_Co=256
+colorscheme solarized
 
 augroup vimrcEx
   autocmd!
@@ -61,7 +67,7 @@ set shiftround
 set expandtab
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·
+set list listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -76,9 +82,11 @@ if executable('ag')
 endif
 
 " Color scheme
-colorscheme github
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
+syntax enable
+set background=dark
+set t_Co=256
+let g:solarized_termcolors=256
+colorscheme solarized
 
 " Make it obvious where 80 characters is
 set textwidth=80

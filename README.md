@@ -61,7 +61,7 @@ For example, your `~/.aliases.local` might look like this:
 Your `~/.gitconfig.local` might look like this:
 
     [alias]
-      l = log --pretty=colored
+croaky      l = log --pretty=colored
     [pretty]
       colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
     [user]
