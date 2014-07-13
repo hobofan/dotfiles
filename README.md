@@ -37,6 +37,9 @@ You can safely run `rcup` multiple times to update:
 
     rcup
 
+You may set your git user-name and -email directly, see therefore the next step
+and update/create your `~/.gitconfig.local`
+
 Make your own customizations
 ----------------------------
 
