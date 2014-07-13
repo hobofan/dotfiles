@@ -1,4 +1,4 @@
-Storeness dotfiles (forked from thoughtbot)
+Storeness dotfiles
 ===================
 
 Requirements
