@@ -4,6 +4,10 @@ thoughtbot dotfiles
 Requirements
 ------------
 
+Install zsh ( [more information about zsh](http://wiki.ubuntuusers.de/Zsh) )
+
+    sudo apt-get install zsh
+
 Set zsh as your login shell:
 
     chsh -s $(which zsh)
