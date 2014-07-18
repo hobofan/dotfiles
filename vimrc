@@ -29,11 +29,6 @@ endif
 
 filetype plugin indent on 
 
-syntax on
-set background=dark
-set t_Co=256
-colorscheme solarized
-
 augroup vimrcEx
   autocmd!
 
@@ -80,13 +75,6 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
-
-" Color scheme
-syntax enable
-set background=dark
-set t_Co=256
-let g:solarized_termcolors=256
-colorscheme solarized
 
 " Make it obvious where 80 characters is
 set textwidth=80
@@ -150,6 +138,14 @@ nnoremap <C-l> <C-w>l
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+
+" Color scheme
+syntax on
+filetype plugin indent on
+set background=dark
+colorscheme solarized
+set t_Co=256
+let g:solarized_termcolors=256
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
