@@ -1,3 +1,6 @@
+# Local env (should actually already be loaded)
+[[ -f ~/.zshenv ]] && source ~/.zshenv
+
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
@@ -7,9 +10,6 @@ git_prompt_info() {
 }
 setopt promptsubst
 export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
-
-# load our own completion functions
-fpath=(~/.zsh/completion $fpath)
 
 # completion
 autoload -U compinit
@@ -31,8 +31,8 @@ colors
 export CLICOLOR=1
 
 # history settings
-setopt hist_ignore_all_dups inc_append_history
-HISTFILE=~/.zhistory
+setopt inc_append_history
+HISTFILE=~/.zsh_history
 HISTSIZE=4096
 SAVEHIST=4096
 
@@ -60,17 +60,17 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
+# eliminate lag when switching between vi modes
+export KEYTIMEOUT=1
+
 # use vim as the visual editor
 export VISUAL=vim
 export EDITOR=$VISUAL
 
 # load rbenv if available
-if which rbenv &>/dev/null ; then
-  eval "$(rbenv init - --no-rehash)"
-fi
-
-# load thoughtbot/dotfiles scripts
-export PATH="$HOME/.bin:$PATH"
+#if which rbenv &>/dev/null ; then
+#  eval "$(rbenv init - --no-rehash)"
+#fi
 
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"

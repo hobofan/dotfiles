@@ -23,3 +23,6 @@
   template = ~/.gitmessage
 [fetch]
   prune = true
+[user]
+	email = goisser94@gmail.com
+	name = Hobofan

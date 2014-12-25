@@ -73,7 +73,7 @@ charging_direction() {
 
 charging_status() {
   if $USING_LAPTOP ; then
-		echo "$(charging_direction)$(acpi | grep -o '[0-9]*%') %%"
+		echo "$(charging_direction)$(acpi | grep -o "[0-9]*%") %%"
 	else
 		echo ""
 	fi

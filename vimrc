@@ -61,6 +61,10 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
+" Format Golang code on save
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+
 " Display extra whitespace
 set list listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
@@ -106,7 +110,7 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 map <Leader>ct :!ctags -R .<CR>
 
 " Switch between the last two files
-nnoremap <leader><leader> <c-^>
+" nnoremap <leader><leader> <c-^>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -134,6 +138,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+" Quick fold toggle
+nnoremap , za
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
