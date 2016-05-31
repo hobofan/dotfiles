@@ -19,7 +19,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "uxterm"
+myTerminal      = "dbus-launch gnome-terminal --hide-menubar"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -66,6 +66,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "dmenu_run")
+
+    , ((modm,               xK_bracketleft     ), spawn "conky -u 0.2 -i 25 | dzen2 -x '0' -w '1920' -h '24' -ta 'c' -bg '#1B1D1E' -fg '#FFFFFF' -y '0'")
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -130,6 +132,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_KP_Right), spawn "xbacklight -set 25")
     , ((modm              , xK_KP_Begin), spawn "xbacklight -set 10")
     , ((modm              , xK_KP_Left), spawn "xbacklight -set 1")
+    , ((modm              , xK_KP_End), spawn "redshift -x")
+    , ((modm              , xK_KP_Down), spawn "redshift -O 3500")
 
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
