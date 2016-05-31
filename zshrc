@@ -47,9 +47,9 @@ setopt extendedglob
 unsetopt nomatch
 
 # vi mode
-bindkey -v
-bindkey "^F" vi-cmd-mode
-bindkey jj vi-cmd-mode
+# bindkey -v
+# bindkey "^F" vi-cmd-mode
+# bindkey jj vi-cmd-mode
 
 # handy keybindings
 bindkey "^A" beginning-of-line
@@ -80,3 +80,11 @@ export PATH=".git/safe/../../bin:$PATH"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+# [[ -s "/home/hobofan/.gvm/scripts/gvm" ]] && source "/home/hobofan/.gvm/scripts/gvm"
+
+export FZF_COMPLETION_OPTS='-x'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$HOME/.plenv/bin:$PATH"
+eval "$(plenv init -)"
+
+source ~/stuff/bash-dotenv/dotenv.zsh
