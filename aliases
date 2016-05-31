@@ -14,10 +14,25 @@ alias e="$EDITOR"
 alias v="$VISUAL"
 
 # git
-alias gci="git pull --rebase && rake && git push"
+# alias gci="git pull --rebase && rake && git push"
+alias gits="git status"
+alias gitau="git add -u"
+alias gitap="git add --patch"
+alias gitcm="git commit -m"
+alias gitdc="git diff --cached"
+alias gitco="git checkout"
+
+alias li='python3 ~/stuff/lightning-cd/lightning-cd.py ~/.lightningpath && cd "`cat ~/.lightningpath`"'
 
 # Bundler
 alias b="bundle"
+
+# Cargo
+alias cb="cargo build"
+alias ct="cargo test"
+
+# Node.js
+alias npe='PATH=$(npm bin):$PATH'
 
 # Tests and Specs
 alias t="ruby -I test"
@@ -28,5 +43,15 @@ alias m="migrate"
 alias rk="rake"
 alias s="rspec"
 
+# PRM
+alias prm=". ~/.prm/prm.sh"
+
+# SecureRandom
+alias secrand12="ruby -e 'require \"securerandom\"; puts SecureRandom.hex(12)'"
+
+# Xclip
+alias xclipc="xclip -selection clipboard"
+
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
+[[ -f ~/.aliases.massagio ]] && source ~/.aliases.massagio
