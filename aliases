@@ -20,7 +20,11 @@ alias gitau="git add -u"
 alias gitap="git add --patch"
 alias gitcm="git commit -m"
 alias gitdc="git diff --cached"
+alias gitds="git diff --stat"
+alias gitdcs="git diff --cached --stat"
 alias gitco="git checkout"
+alias gitst="git stash"
+alias gitstp="git stash pop"
 
 alias li='python3 ~/stuff/lightning-cd/lightning-cd.py ~/.lightningpath && cd "`cat ~/.lightningpath`"'
 
@@ -51,6 +55,20 @@ alias secrand12="ruby -e 'require \"securerandom\"; puts SecureRandom.hex(12)'"
 
 # Xclip
 alias xclipc="xclip -selection clipboard"
+
+# Codeclimate Docker
+alias codeclimate="docker run --interactive --tty --rm --env CODECLIMATE_CODE=\"$PWD\" --volume \"$PWD\":/code --volume /var/run/docker.sock:/var/run/docker.sock --volume /tmp/cc:/tmp/cc codeclimate/codeclimate"
+
+# GHI
+alias ghi_sprint="ghi list -g --label P-sprint"
+alias ghi_sprint_mine="ghi list -g --label P-sprint --mine"
+
+# Desk
+alias dg='desk go'
+
+# Quick edit
+alias qa='atom $(fzf)'
+alias qv='vim $(fzf)'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

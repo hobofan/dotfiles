@@ -1,6 +1,6 @@
 setopt prompt_subst
 
-source $ZSH_CUSTOM/configflags.zsh 
+source $ZSH_CUSTOM/configflags.zsh
 
 GIT_PROMPT_SYMBOL="%{$fg[cyan]%}"
 # GIT_PROMPT_PREFIX="%{$bg[cyan]$fg[black]%}[%{$reset_color%}"
@@ -78,6 +78,7 @@ charging_status() {
 		echo ""
 	fi
 }
+
 # Set the right-hand prompt
 PROMPT='%{$bg[yellow]$fg[black]%}%D{%H:%M %b %d} %{$reset_color%}%{$bg[red]$fg[black]%}$(charging_status)%{$reset_color%}%{$bg[cyan]$fg[black]%} %n %{$reset_color%}%{$fg[cyan]%}%{$reset_color%} ${PWD/#$HOME/~} $(git_prompt_string)
 '

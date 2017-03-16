@@ -12,6 +12,7 @@ import XMonad.Util.Run
 import Data.Monoid
 import System.Exit
 import XMonad.Layout.IndependentScreens
+import XMonad.Hooks.EwmhDesktops
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -19,7 +20,9 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "termite"
+
+-- myTerminal      = "termite"
+myTerminal      = "gnome-terminal --hide-menubar"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -65,7 +68,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run")
+    , ((modm,               xK_p     ), spawn "rofi -show run")
 
     , ((modm,               xK_bracketleft     ), spawn "conky -u 0.2 -i 25 | dzen2 -x '0' -w '1920' -h '24' -ta 'c' -bg '#1B1D1E' -fg '#FFFFFF' -y '0'")
 
@@ -82,7 +85,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
 
     -- Resize viewed windows to the correct size
-    , ((modm,               xK_n     ), refresh)
+    -- , ((modm,               xK_n     ), refresh)
 
     -- Move focus to the next window
     , ((modm,               xK_Tab   ), windows W.focusDown)
@@ -94,7 +97,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_k     ), windows W.focusUp  )
 
     -- Move focus to the master window
-    , ((modm,               xK_m     ), windows W.focusMaster  )
+    --, ((modm,               xK_m     ), windows W.focusMaster  )
+
+    -- Switch caps to escape
+    , ((modm,               xK_n     ), spawn "xmodmap -e 'clear Lock' && xmodmap -e 'keycode 66 = Caps_Lock'"  )
+    , ((modm,               xK_m     ), spawn "xmodmap -e 'clear Lock' && xmodmap -e 'keycode 66 = Escape'"  )
 
     -- Swap the focused window and the master window
     , ((modm,               xK_Return), windows W.swapMaster)
@@ -122,18 +129,19 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- CUSTOM
     -- Switch Keyboard layout to en 
-    , ((modm              , xK_i),spawn "setxkbmap -layout us")
+    , ((modm              , xK_i),spawn "setxkbmap -layout us && xmodmap -e 'clear Lock' && xmodmap -e 'keycode 66 = Escape'")
     -- Switch Keyboard layout to de 
-    , ((modm              , xK_o), spawn "setxkbmap -layout de")
+    , ((modm              , xK_o), spawn "setxkbmap -layout de && xmodmap -e 'clear Lock' && xmodmap -e 'keycode 66 = Escape'")
 
-    , ((modm              , xK_KP_Page_Up), spawn "xbacklight -set 100")
-    , ((modm              , xK_KP_Up), spawn "xbacklight -set 75")
-    , ((modm              , xK_KP_Home), spawn "xbacklight -set 50")
-    , ((modm              , xK_KP_Right), spawn "xbacklight -set 25")
-    , ((modm              , xK_KP_Begin), spawn "xbacklight -set 10")
+    , ((modm              , xK_KP_Page_Up), spawn "xbacklight -set 100 && xrandr --output HDMI2 --brightness 1")
+    , ((modm              , xK_KP_Up), spawn "xbacklight -set 75 && xrandr --output HDMI2 --brightness 0.9")
+    , ((modm              , xK_KP_Home), spawn "xbacklight -set 50 && xrandr --output HDMI2 --brightness 0.8")
+    , ((modm              , xK_KP_Right), spawn "xbacklight -set 25 && xrandr --output HDMI2 --brightness 0.7")
+    , ((modm              , xK_KP_Begin), spawn "xbacklight -set 10 && xrandr --output HDMI2 --brightness 0.5")
     , ((modm              , xK_KP_Left), spawn "xbacklight -set 1")
     , ((modm              , xK_KP_End), spawn "redshift -x")
-    , ((modm              , xK_KP_Down), spawn "redshift -O 3500")
+    , ((modm              , xK_KP_Down), spawn "redshift -O 3400")
+    , ((modm              , xK_KP_Next), spawn "redshift -O 1900")
 
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
@@ -274,6 +282,9 @@ myStartupHook = return ()
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = xmonad defaults
+
+-- $ ewmh defaultConfig{ handleEventHook =
+--            handleEventHook defaultConfig <+> fullscreenEventHook }
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
