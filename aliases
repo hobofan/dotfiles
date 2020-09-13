@@ -12,6 +12,8 @@ alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
+# qe = Quick Edit
+alias qe="nvim"
 
 # git
 # alias gci="git pull --rebase && rake && git push"
@@ -23,8 +25,8 @@ alias gitdc="git diff --cached"
 alias gitds="git diff --stat"
 alias gitdcs="git diff --cached --stat"
 alias gitco="git checkout"
-alias gitst="git stash"
-alias gitstp="git stash pop"
+alias gca="git commit --amend"
+alias gpf="git push --force"
 
 alias li='python3 ~/stuff/lightning-cd/lightning-cd.py ~/.lightningpath && cd "`cat ~/.lightningpath`"'
 
@@ -34,6 +36,9 @@ alias b="bundle"
 # Cargo
 alias cb="cargo build"
 alias ct="cargo test"
+# cargo build -> cargo b -> cardi b
+alias cardi=cargo
+alias doconly="cargo doc --open --no-deps -p"
 
 # Node.js
 alias npe='PATH=$(npm bin):$PATH'
@@ -72,4 +77,3 @@ alias qv='vim $(fzf)'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
-[[ -f ~/.aliases.massagio ]] && source ~/.aliases.massagio

@@ -19,9 +19,9 @@ compinit
 export TERM=xterm-256color
 
 # load custom executable functions
-for function in ~/.zsh/functions/*; do
-  source $function
-done
+# for function in ~/.zsh/functions/*; do
+#   source $function
+# done
 
 # makes color constants available
 autoload -U colors
@@ -82,9 +82,23 @@ export PATH=".git/safe/../../bin:$PATH"
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 # [[ -s "/home/hobofan/.gvm/scripts/gvm" ]] && source "/home/hobofan/.gvm/scripts/gvm"
 
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_COMPLETION_OPTS='-x'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="$HOME/.plenv/bin:$PATH"
-eval "$(plenv init -)"
 
-source ~/stuff/bash-dotenv/dotenv.zsh
+# source ~/stuff/bash-dotenv/dotenv.zsh
+
+export PATH=/Users/hobofan/.local/bin/luna-studio:$PATH
+
+# OPAM configuration
+. /Users/hobofan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+source /Users/hobofan/.composure/composure.sh
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/hobofan/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/hobofan/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/hobofan/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/hobofan/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+source /Users/hobofan/Library/Preferences/org.dystroy.broot/launcher/bash/br
